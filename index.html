@@ -150,7 +150,10 @@
             margin-bottom: 30px; /* Text se pehle thora gap */
             max-width: 90%;      /* Mobile pe full width se thora kam */
         }
+        
+
     }
+    
 </style>
 <!--feactueeeeeerrrr-->
 <style>
@@ -597,6 +600,73 @@
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Mouse lane par glow kare */
     }
 </style>
+<!--contactttt-->
+<style>
+    /* --- 8. CONTACT FORM SECTION --- */
+    .contact-section {
+        padding: 100px 0;
+        background-color: #ffffff;
+        position: relative;
+    }
+    [data-bs-theme="dark"] .contact-section {
+        background-color: #1a1d20; /* Darker than grey for contrast */
+    }
+
+    /* Input Fields Styling */
+    .form-control-custom {
+        background-color: #f8f9fa;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 15px;
+        font-size: 1rem;
+        transition: all 0.3s;
+    }
+
+    .form-control-custom:focus {
+        background-color: #ffffff;
+        border-color: #4f46e5; /* Theme Color Focus */
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); /* Glow */
+    }
+
+    /* Dark Mode Inputs */
+    [data-bs-theme="dark"] .form-control-custom {
+        background-color: #2b3035;
+        border-color: #495057;
+        color: white;
+    }
+    [data-bs-theme="dark"] .form-control-custom:focus {
+        background-color: #2b3035;
+        border-color: #4f46e5;
+    }
+
+    /* Info Box styling */
+    .contact-info-box {
+        padding: 30px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    [data-bs-theme="dark"] .contact-info-box {
+        background: #212529;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+    .info-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(79, 70, 229, 0.1);
+        color: #4f46e5;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        margin-right: 15px;
+    }
+</style>
 </head>
 <body>
 
@@ -613,6 +683,7 @@
                     <li class="nav-item"><a class="nav-link px-3" href="#features">Features</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#dashboard">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#contact">Contact</a></li>
                 </ul>
                 
                 <div class="d-flex align-items-center gap-3">
@@ -638,8 +709,8 @@
                     </p>
                     
                     <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
-                        <a href="#" class="btn btn-custom-primary btn-lg">Get Started Free</a>
-                        <a href="#" class="btn btn-custom-outline btn-lg">Talk to Sales</a>
+                        <a href="#" class="btn btn-custom-primary btn-lg" id="get">Get Started Free</a>
+                        <a href="#" class="btn btn-custom-outline btn-lg" id="talk">Talk to Sales</a>
                     </div>
 
                     <div class="mt-4 text-body-secondary small fw-bold">
@@ -917,6 +988,80 @@
                         <a href="#" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold">Book a Demo</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+<!--contactttt-->
+<section id="contact" class="contact-section">
+        <div class="container">
+            
+            <div class="row mb-5 text-center">
+                <div class="col-lg-8 mx-auto">
+                    <span class="text-primary fw-bold text-uppercase small">Get in Touch</span>
+                    <h2 class="fw-bolder display-5 mt-2">Have questions? <span class="highlight-text">Let's talk.</span></h2>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                
+                <div class="col-lg-7">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold small text-secondary">Your Name</label>
+                                <input type="text" class="form-control form-control-custom" placeholder="John Doe">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold small text-secondary">Email Address</label>
+                                <input type="email" class="form-control form-control-custom" placeholder="john@example.com">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-bold small text-secondary">Subject</label>
+                                <input type="text" class="form-control form-control-custom" placeholder="I need a demo for my clinic...">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-bold small text-secondary">Message</label>
+                                <textarea class="form-control form-control-custom" rows="5" placeholder="Tell us about your requirements..."></textarea>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-custom-primary w-100 py-3 shadow-lg">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="contact-info-box h-100">
+                        <h4 class="fw-bold mb-4">Contact Information</h4>
+                        
+                        <div class="info-item">
+                            <div class="info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Our Office</h6>
+                                <p class="text-body-secondary mb-0 small">Software House St, Tech City, Pakistan</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="bi bi-envelope-fill"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Email Us</h6>
+                                <p class="text-body-secondary mb-0 small">support@codedclouds.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="bi bi-telephone-fill"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Call Us</h6>
+                                <p class="text-body-secondary mb-0 small">+92 300 1234567</p>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
