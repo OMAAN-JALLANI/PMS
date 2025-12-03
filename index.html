@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMS - Modern Healthcare</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+    /* 1. General Settings */
+    body {
+        font-family: 'Inter', sans-serif;
+        transition: background-color 0.3s, color 0.3s;
+        overflow-x: hidden; /* Side scroll khatam karne k liye */
+        
+    }
+
+    /* 2. Background Themes */
+    [data-bs-theme="light"] body { 
+        
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            /* Or use the colorful one: */
+            background: linear-gradient(120deg, #f3f4f6 0%, #e0e7ff 50%, #fce7f3 100%); 
+    }
+
+    /* 3. Navbar Styling */
+    .navbar {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .navbar-brand {
+        font-weight: 800;
+        font-size: 1.5rem;
+    }
+
+    /* 4. Hero Section - Responsive Spacing */
+    .hero-section {
+        padding-top: 40px;      /* Mobile k liye kam padding */
+        padding-bottom: 40px;
+        min-height: auto;
+    }
+
+    /* Desktop k liye spacing barha di */
+    @media (min-width: 992px) {
+        .hero-section {
+            padding-top: 80px;
+            padding-bottom: 80px;
+            min-height: 80vh;
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+        }
+    }
+    
+    /* 5. Hero Text - Responsive Font Size */
+    .hero-title {
+        font-weight: 800;
+        line-height: 1.2;
+        font-size: 2.2rem; /* Mobile Size */
+        margin-bottom: 15px;
+    }
+
+    /* Laptop/PC Size */
+    @media (min-width: 992px) {
+        .hero-title {
+            font-size: 3.8rem; /* Big Size */
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+    }
+
+    /* Gradient Text Color */
+    .highlight-text {
+        background: -webkit-linear-gradient(45deg, #4f46e5, #9333ea);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* 6. Buttons Styling */
+    .btn-custom-primary {
+        background-color: #4f46e5;
+        color: white;
+        border-radius: 50px;
+        padding: 10px 24px;
+        font-weight: 600;
+        border: none;
+        transition: transform 0.2s;
+    }
+    .btn-custom-primary:hover {
+        background-color: #4338ca;
+        transform: translateY(-2px);
+        color: white;
+    }
+
+    .btn-custom-outline {
+        border-radius: 50px;
+        padding: 10px 24px;
+        font-weight: 600;
+        border: 1px solid #ced4da;
+        transition: all 0.2s;
+        background-color: transparent;
+    }
+    .btn-custom-outline:hover {
+        background-color: #f8f9fa;
+        color: #000;
+    }
+
+    /* Dark Mode Buttons */
+    [data-bs-theme="dark"] .btn-custom-outline {
+        border-color: #495057;
+        color: #e9ecef;
+    }
+    [data-bs-theme="dark"] .btn-custom-outline:hover {
+        background-color: #343a40;
+    }
+
+    /* 7. IMAGE STYLING (Sharp & Clear) */
+    .hero-img {
+        border-radius: 12px;
+        /* Blur aur Tilt hata diya taake clear nazar aaye */
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+        width: 100%;       /* Container mein fit */
+        height: auto;      /* Aspect ratio maintain rahe */
+        object-fit: contain;
+    }
+    
+    /* Mobile pe image main thora margin dena */
+    @media (max-width: 991px) {
+        .hero-img {
+            margin-bottom: 30px; /* Text se pehle thora gap */
+            max-width: 90%;      /* Mobile pe full width se thora kam */
+        }
+    }
+</style>
+<!--feactueeeeeerrrr-->
+<style>
+    /* --- 1. SMOOTH SCROLL (Ye zaroori hai) --- */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* --- 2. FEATURES SECTION STYLING --- */
+    .features-section {
+        padding: 100px 0;
+        position: relative;
+    }
+
+    /* Card Design */
+    .feature-card {
+        border: none;
+        border-radius: 20px;
+        background: #ffffff;
+        padding: 40px 30px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    /* Light Mode Shadows */
+    [data-bs-theme="light"] .feature-card {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    }
+    
+    /* Dark Mode Adjustments */
+    [data-bs-theme="dark"] .feature-card {
+        background: #212529; /* Dark card */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* HOVER EFFECT (Card hawa mein uthega) */
+    .feature-card:hover {
+        transform: translateY(-10px); /* Upar uthna */
+        box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15); /* Shadow color change */
+    }
+
+    /* Icon Box Circle */
+    .icon-box {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        background: rgba(79, 70, 229, 0.1); /* Halka purple background */
+        color: #4f46e5; /* Icon color */
+        transition: transform 0.3s;
+    }
+
+    .feature-card:hover .icon-box {
+        transform: rotate(10deg) scale(1.1); /* Icon thora ghoomega */
+    }
+</style>
+<!--dashboarddddddd-->
+<style>
+    /* --- 1. DEEP DIVE SECTION (SMART DASHBOARD) --- */
+    .deep-dive-section {
+        padding: 100px 0;
+        /* Light mode: Halka sa grey/blue background */
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); 
+        position: relative;
+    }
+
+    /* Dark Mode specific background */
+    [data-bs-theme="dark"] .deep-dive-section {
+        background: #2b3035; /* Darker background for contrast */
+    }
+
+    .deep-dive-img-container {
+        position: relative;
+        padding: 20px; /* For the transparent border effect */
+        border-radius: 20px; 
+        backdrop-filter: blur(8px); /* Blur for glass effect */
+        -webkit-backdrop-filter: blur(8px);  
+    }
+    [data-bs-theme="dark"] .deep-dive-img-container { 
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    .deep-dive-img {
+        border-radius: 12px;
+        width: 100%;
+        height: auto;
+        display: block; 
+    }
+
+    .feature-list-item {
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: flex-start;
+    }
+    .feature-list-item i {
+        font-size: 1.5rem;
+        margin-right: 10px;
+        color: #198754; /* Green checkmark */
+        line-height: 1.2;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 991px) {
+        .deep-dive-section {
+            padding: 60px 0;
+        }
+        .deep-dive-img-container {
+            margin-bottom: 40px;
+        }
+    }
+</style>
+<!--trusttt-->
+<style>
+    /* --- 4. CIRCULAR STATS SECTION --- */
+    .stats-section {
+        padding: 80px 0;
+        background-color: #4f46e5; /* Wahi Dark Indigo Color */
+        color: white;
+        position: relative;
+    }
+    
+    [data-bs-theme="dark"] .stats-section {
+        background-color: #312e81; 
+    }
+
+    /* Container for Circle */
+    .circle-wrap {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 20px auto; /* Center mein lane k liye */
+    }
+
+    /* SVG Settings */
+    .progress-ring {
+        transform: rotate(-90deg); /* Start from top */
+        transform-origin: 50% 50%;
+    }
+
+    .progress-ring__circle {
+        transition: stroke-dashoffset 1s ease-in-out;
+        transform-origin: 50% 50%;
+    }
+
+    /* Text inside the circle */
+    .circle-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 100%;
+    }
+
+    .circle-number {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1;
+        display: block;
+    }
+    
+    .circle-label-inside {
+        font-size: 0.8rem;
+        font-weight: 500;
+        opacity: 0.8;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .stat-label-bottom {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-top: 10px;
+        opacity: 0.9;
+    }
+</style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">PMS.</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-medium">
+                    <li class="nav-item"><a class="nav-link px-3" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#">Pricing</a></li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-link nav-link" id="themeToggle">
+                        <i class="bi bi-moon-stars-fill fs-5" id="themeIcon"></i>
+                    </button>
+
+                    <a href="#" class="btn btn-custom-primary shadow-sm">Book a Demo</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center flex-column-reverse flex-lg-row">
+                
+                <div class="col-lg-6 text-center text-lg-start mt-5 mt-lg-0">
+                    <h1 class="hero-title">
+                        The smart <span class="highlight-text">management</span> system for hospitals.
+                    </h1>
+                    <p class="lead mb-4 text-body-secondary">
+                        Streamline patient records, appointments, and billing in one secure platform. No clutter, just care.
+                    </p>
+                    
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                        <a href="#" class="btn btn-custom-primary btn-lg">Get Started Free</a>
+                        <a href="#" class="btn btn-custom-outline btn-lg">Talk to Sales</a>
+                    </div>
+
+                    <div class="mt-4 text-body-secondary small fw-bold">
+                        <i class="bi bi-star-fill text-warning"></i> 5-Star Rated by Rehab Centers
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4 mb-lg-0 text-center">
+                    <img src="./images/hero.png " style="filter: blur(0%);"
+                         alt="PMS Interface" 
+                         class="img-fluid hero-img">
+                </div>
+
+            </div>
+        </div>
+    </section>
+<!--featureeeerrrrr-->
+<section id="features" class="features-section">
+        <div class="container">
+            
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <span class="text-primary fw-bold text-uppercase tracking-wider small">Why Choose PMS?</span>
+                    <h2 class="fw-bolder display-5 mt-2">Everything you need to <span class="highlight-text">run your hospital</span></h2>
+                    <p class="text-body-secondary mt-3 fs-5">
+                        Powerful features packaged in a simple interface. Manage your entire facility without the headache.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                
+                <div class="col-md-4">
+                    <div class="feature-card text-center text-md-start">
+                        <div class="icon-box text-primary bg-primary-subtle">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">Patient Records</h3>
+                        <p class="text-body-secondary mb-0">
+                            Keep track of history, prescriptions, and reports in one secure place. Access data instantly with one click.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-card text-center text-md-start">
+                        <div class="icon-box text-success bg-success-subtle" style="color: #10b981; background: rgba(16, 185, 129, 0.1);">
+                            <i class="bi bi-calendar-check-fill"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">Smart Scheduling</h3>
+                        <p class="text-body-secondary mb-0">
+                            Drag-and-drop appointments. Send automated reminders to patients so they never miss a visit.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-card text-center text-md-start">
+                        <div class="icon-box text-warning bg-warning-subtle" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);">
+                            <i class="bi bi-receipt"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">Billing & Invoices</h3>
+                        <p class="text-body-secondary mb-0">
+                            Generate professional invoices in seconds. Track payments, dues, and insurance claims effortlessly.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+   <!--dashboarddddddd-->
+<section id="dashboard" class="deep-dive-section">
+        <div class="container">
+            <div class="row align-items-center flex-column-reverse flex-lg-row">
+                
+                <div class="col-lg-6 mb-4 mb-lg-0 text-center text-lg-start">
+                    <div class="deep-dive-img-container">
+                        <img src="./images/dash.png" 
+                             alt="PMS Dashboard Interface" 
+                             class="deep-dive-img">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 ps-lg-5">
+                    <span class="text-primary fw-bold text-uppercase tracking-wider small">Intuitive Dashboard</span>
+                    <h2 class="fw-bolder display-5 mt-2">See your <span class="highlight-text">hospital data</span> in real-time.</h2>
+                    <p class="text-body-secondary mt-3 fs-5">
+                        Our powerful dashboard gives you a bird's-eye view of all operations. Make informed decisions, faster.
+                    </p>
+
+                    <ul class="list-unstyled mt-4">
+                        <li class="feature-list-item">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <div>
+                                <h5 class="fw-bold mb-1">Real-time Analytics</h5>
+                                <p class="text-body-secondary mb-0">Track patient flow, revenue, and staff performance live.</p>
+                            </div>
+                        </li>
+                        <li class="feature-list-item">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <div>
+                                <h5 class="fw-bold mb-1">Customizable Reports</h5>
+                                <p class="text-body-secondary mb-0">Generate reports on any metric, tailored to your needs.</p>
+                            </div>
+                        </li>
+                        <li class="feature-list-item">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <div>
+                                <h5 class="fw-bold mb-1">Secure Data Handling</h5>
+                                <p class="text-body-secondary mb-0">Your sensitive data is encrypted and backed up, always.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <a href="#" class="btn btn-custom-primary mt-4">Explore Dashboard</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--trustttt-->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row g-5 text-center">
+                
+                <div class="col-md-3 col-6">
+                    <div class="circle-wrap">
+                        <svg class="progress-ring" width="150" height="150">
+                            <circle class="progress-ring__circle" stroke="rgba(255,255,255,0.2)" stroke-width="8" fill="transparent" r="52" cx="75" cy="75" />
+                            <circle class="progress-ring__circle" stroke="#ffffff" stroke-width="8" fill="transparent" r="52" cx="75" cy="75" 
+                                    style="stroke-dasharray: 327; stroke-dashoffset: 32;" />
+                        </svg>
+                        <div class="circle-text">
+                            <span class="circle-number">90%</span>
+                        </div>
+                    </div>
+                    <div class="stat-label-bottom">Efficiency</div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="circle-wrap">
+                        <svg class="progress-ring" width="150" height="150">
+                            <circle class="progress-ring__circle" stroke="rgba(255,255,255,0.2)" stroke-width="8" fill="transparent" r="52" cx="75" cy="75" />
+                            <circle class="progress-ring__circle" stroke="#ffffff" stroke-width="8" fill="transparent" r="52" cx="75" cy="75" 
+                                    style="stroke-dasharray: 327; stroke-dashoffset: 0;" />
+                        </svg>
+                        <div class="circle-text">
+                            <span class="circle-number">100%</span>
+                        </div>
+                    </div>
+                    <div class="stat-label-bottom">Data Secure</div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="circle-wrap">
+                        <svg class="progress-ring" width="150" height="150">
+                            <circle class="progress-ring__circle" stroke="rgba(255,255,255,0.2)" stroke-width="8" fill="transparent" r="52" cx="75" cy="75" />
+                            <circle class="progress-ring__circle" stroke="#ffffff" stroke-width="8" fill="transparent" r="52" cx="75" cy="75" 
+                                    style="stroke-dasharray: 327; stroke-dashoffset: 3;" />
+                        </svg>
+                        <div class="circle-text">
+                            <span class="circle-number">95%</span>
+                        </div>
+                    </div>
+                    <div class="stat-label-bottom">Uptime</div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="circle-wrap">
+                        <svg class="progress-ring" width="150" height="150">
+                            <circle class="progress-ring__circle" stroke="rgba(255,255,255,0.2)" stroke-width="8" fill="transparent" r="52" cx="75" cy="75" />
+                            <circle class="progress-ring__circle" stroke="#ffffff" stroke-width="8" fill="transparent" r="52" cx="75" cy="75" 
+                                    style="stroke-dasharray: 327; stroke-dashoffset: 0;" />
+                        </svg>
+                        <div class="circle-text">
+                            <span class="circle-number" style="font-size: 1.5rem;">24/7</span>
+                        </div>
+                    </div>
+                    <div class="stat-label-bottom">Live Support</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+
+        // Check user preference logic
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.getAttribute('data-bs-theme') === 'dark') {
+                htmlElement.setAttribute('data-bs-theme', 'light');
+                themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
+            } else {
+                htmlElement.setAttribute('data-bs-theme', 'dark');
+                themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
+            }
+        });
+    </script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
