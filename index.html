@@ -317,6 +317,226 @@
         opacity: 0.9;
     }
 </style>
+<!--priceeeeeeeee-->
+<style>
+    /* --- 5. PRICING SECTION --- */
+    .pricing-section {
+        padding: 100px 0;
+        background-color: #f8f9fa; /* Halka grey background poore section ka */
+        position: relative;
+    }
+    
+    [data-bs-theme="dark"] .pricing-section {
+        background-color: #212529; /* Dark mode background */
+    }
+
+    /* General Card Style */
+    .pricing-card {
+        border: none;
+        border-radius: 20px;
+        padding: 40px 30px;
+        background: #ffffff;
+        transition: transform 0.3s;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Beech wala (Popular) Card - DARK STYLE */
+    .pricing-card.popular {
+        background: #4f46e5; /* Indigo Color */
+        color: white;
+        transform: scale(1.05); /* Ye thora bara dikhega */
+        box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
+        z-index: 10;
+        border: 2px solid #4f46e5;
+    }
+
+    /* Dark Mode tweaks for normal cards */
+    [data-bs-theme="dark"] .pricing-card:not(.popular) {
+        background: #2b3035;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* Typography inside cards */
+    .plan-name {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        color: #6c757d;
+    }
+    
+    /* Popular card k text ka rang white ho */
+    .popular .plan-name {
+        color: #a5b4fc; /* Halka purple text */
+    }
+
+    .plan-price {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+    }
+    .plan-price span {
+        font-size: 1rem;
+        font-weight: 500;
+        opacity: 0.7;
+    }
+
+    /* Features List */
+    .plan-features {
+        list-style: none;
+        padding: 0;
+        margin: 30px 0;
+        flex-grow: 1; /* Button ko neechay push karne k liye */
+    }
+    .plan-features li {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+    }
+    .plan-features li i {
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+    
+    /* Green Checks for Normal Cards */
+    .pricing-card:not(.popular) .plan-features li i {
+        color: #10b981; /* Green */
+    }
+    /* White Checks for Popular Card */
+    .popular .plan-features li i {
+        color: #ffffff;
+    }
+
+    /* Buttons inside Pricing */
+    .btn-price {
+        width: 100%;
+        padding: 15px;
+        border-radius: 50px;
+        font-weight: 700;
+        transition: 0.3s;
+    }
+    
+    /* Normal Card Button (Outline) */
+    .btn-price-outline {
+        border: 2px solid #4f46e5;
+        color: #4f46e5;
+        background: transparent;
+    }
+    .btn-price-outline:hover {
+        background: #4f46e5;
+        color: white;
+    }
+
+    /* Popular Card Button (White) */
+    .btn-price-white {
+        background: white;
+        color: #4f46e5;
+        border: none;
+    }
+    .btn-price-white:hover {
+        background: #f3f4f6;
+
+    }
+    
+</style>
+<!--ctaaaaaa-->
+<style>
+    /* --- 6. FINAL CTA SECTION --- */
+    .cta-section {
+        padding: 80px 0;
+        /* Background same as pricing to blend in, but the box will pop */
+        background-color: #f8f9fa; 
+    }
+    [data-bs-theme="dark"] .cta-section {
+        background-color: #212529;
+    }
+
+    .cta-box {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); /* Purple Gradient */
+        border-radius: 30px;
+        padding: 60px 40px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 20px 50px rgba(79, 70, 229, 0.3); /* Glow effect */
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Background Circles Design inside CTA (Decoration) */
+    .cta-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+    }
+    .circle-1 { width: 200px; height: 200px; top: -50px; left: -50px; }
+    .circle-2 { width: 300px; height: 300px; bottom: -100px; right: -50px; }
+
+    /* --- 7. FOOTER SECTION --- */
+    .footer {
+        padding: 60px 0 30px 0;
+        background-color: #111827; /* Always Dark Footer looks pro */
+        color: #d1d5db;
+        font-size: 0.95rem;
+    }
+    
+    .footer-brand {
+        color: white;
+        font-weight: 800;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        display: block;
+        text-decoration: none;
+    }
+
+    .footer h5 {
+        color: white;
+        font-weight: 700;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+    }
+
+    .footer-link {
+        color: #9ca3af;
+        text-decoration: none;
+        margin-bottom: 12px;
+        display: block;
+        transition: color 0.2s;
+    }
+    .footer-link:hover {
+        color: #4f46e5; /* Purple hover */
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.1);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: white;
+        margin-right: 10px;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .social-icon:hover {
+        background: #4f46e5;
+        transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        margin-top: 50px;
+        padding-top: 30px;
+        text-align: center;
+        font-size: 0.85rem;
+    }
+</style>
 </head>
 <body>
 
@@ -332,7 +552,7 @@
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-medium">
                     <li class="nav-item"><a class="nav-link px-3" href="#features">Features</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#dashboard">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#pricing">Pricing</a></li>
                 </ul>
                 
                 <div class="d-flex align-items-center gap-3">
@@ -545,9 +765,151 @@
             </div>
         </div>
     </section>
+<!--proceeeeeeeeeee-->
+<section id="pricing" class="pricing-section">
+        <div class="container">
+            
+            <div class="text-center mb-5">
+                <span class="text-primary fw-bold text-uppercase tracking-wider small">Simple Pricing</span>
+                <h2 class="fw-bolder display-5 mt-2">Choose the plan that <span class="highlight-text">fits you</span></h2>
+                <p class="text-body-secondary fs-5">No hidden fees. Cancel anytime.</p>
+            </div>
 
+            <div class="row align-items-center g-4">
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card">
+                        <div class="plan-name">Starter</div>
+                        <div class="plan-price">$49<span>/mo</span></div>
+                        <p class="text-body-secondary">Perfect for small clinics starting out.</p>
+                        
+                        <ul class="plan-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Up to 500 Patients</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 1 Doctor Account</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Basic Appointments</li>
+                            <li class="text-body-secondary opacity-50"><i class="bi bi-x-circle"></i> No Billing System</li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-price btn-price-outline">Get Started</a>
+                    </div>
+                </div>
 
+                <div class="col-lg-4">
+                    <div class="pricing-card popular">
+                        <div class="badge bg-white text-primary rounded-pill mb-3 px-3 py-2" style="width: fit-content;">Most Popular</div>
+                        
+                        <div class="plan-name">Growth</div>
+                        <div class="plan-price">$89<span>/mo</span></div>
+                        <p class="opacity-75">For growing hospitals with active flow.</p>
+                        
+                        <ul class="plan-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Unlimited Patients</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 5 Doctor Accounts</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Smart Billing & Invoices</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 24/7 Priority Support</li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-price btn-price-white" style="color: #4540d1;">Choose Growth</a>
+                    </div>
+                </div>
 
+                <div class="col-lg-4">
+                    <div class="pricing-card">
+                        <div class="plan-name">Enterprise</div>
+                        <div class="plan-price">$199<span>/mo</span></div>
+                        <p class="text-body-secondary">Full control for large facilities.</p>
+                        
+                        <ul class="plan-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Everything in Pro</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Unlimited Accounts</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Custom Reporting</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Dedicated Manager</li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-price btn-price-outline">Contact Sales</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+<!--Ctaaaaaaaaa-->
+<section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <div class="cta-circle circle-1"></div>
+                <div class="cta-circle circle-2"></div>
+
+                <div class="position-relative z-1">
+                    <h2 class="fw-bold display-5 mb-3">Ready to transform your hospital?</h2>
+                    <p class="fs-5 opacity-75 mb-4 max-w-2xl mx-auto">
+                        Join 500+ clinics using PMS to streamline their workflow. <br> 
+                        Start your 14-day free trial today.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 flex-column flex-sm-row">
+                        <a href="#" class="btn btn-light rounded-pill px-5 py-3 fw-bold text-primary shadow">Get Started Now</a>
+                        <a href="#" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold">Book a Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <a href="#" class="footer-brand">PMS.</a>
+                    <p>
+                        A product by <strong>Coded Clouds</strong>. <br>
+                        Making healthcare management simple, efficient, and secure for everyone.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-2 offset-lg-1">
+                    <h5>Product</h5>
+                    <a href="#" class="footer-link">Features</a>
+                    <a href="#" class="footer-link">Pricing</a>
+                    <a href="#" class="footer-link">Integrations</a>
+                    <a href="#" class="footer-link">Updates</a>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <h5>Company</h5>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Blog</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+
+                <div class="col-lg-3 mt-4 mt-lg-0">
+                    <h5>Contact Us</h5>
+                    <p class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i> Software House St, Tech City</p>
+                    <p class="mb-2"><i class="bi bi-envelope-fill me-2"></i> support@codedclouds.com</p>
+                    <p><i class="bi bi-telephone-fill me-2"></i> +92 300 1234567</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        © 2024 PMS by Coded Clouds. All rights reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                        <a href="#" class="text-white text-decoration-none small me-3 opacity-50">Privacy Policy</a>
+                        <a href="#" class="text-white text-decoration-none small opacity-50">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 
